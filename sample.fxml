@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="151.0" prefWidth="1000.0" style="-fx-background-color: #383F5C;">
+         <children>
+            <Button fx:id="SignInAsAdministrator" layoutX="613.0" layoutY="46.0" mnemonicParsing="false" onAction="#SignIn" prefHeight="31.0" prefWidth="66.0" text="Войти" />
+            <TextField fx:id="Login_Field" layoutX="426.0" layoutY="24.0" promptText="login" />
+            <PasswordField fx:id="Password_Field" layoutX="426.0" layoutY="72.0" promptText="password" />
+            <Text fx:id="Username" fill="#ffc100" layoutX="778.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="RIGHT" visible="false" wrappingWidth="207.291015625">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+            <Button fx:id="ExitAsAdministrator" layoutX="934.0" layoutY="112.0" mnemonicParsing="false" onAction="#ExitFromSystem" text="Выйти" visible="false" />
+            <Text fx:id="InitializeError" fill="RED" layoutX="421.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Неверные логин или пароль" visible="false" />
+         </children></AnchorPane>
+      <TabPane layoutY="147.0" prefHeight="653.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Главная">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="Products" onMouseClicked="#initialize" prefHeight="666.0" prefWidth="735.0">
+                          <columns>
+                            <TableColumn fx:id="Products_Id" prefWidth="49.0" text="id" />
+                            <TableColumn fx:id="Products_Name" prefWidth="133.0" text="Наименование" />
+                              <TableColumn fx:id="Products_Category" prefWidth="103.0" text="Категория" />
+                              <TableColumn fx:id="Products_Manufacturer" prefWidth="158.0" text="Производитель" />
+                              <TableColumn fx:id="Products_Price" prefWidth="74.0" text="Цена" />
+                              <TableColumn fx:id="Products_Quantity" prefWidth="75.0" text="Кол-во" />
+                              <TableColumn fx:id="Products_Unit" prefWidth="57.0" text="Ед. изм." />
+                              <TableColumn fx:id="Products_Date" prefWidth="83.0" text="Дата завоза" />
+                          </columns>
+                        </TableView>
+                        <TextField fx:id="Search_Name" layoutX="789.0" layoutY="49.0" />
+                        <TextField fx:id="Search_Category" layoutX="789.0" layoutY="105.0" />
+                        <TextField fx:id="Search_Manufacturer" layoutX="789.0" layoutY="163.0" />
+                        <TextField fx:id="Search_price_from" layoutX="759.0" layoutY="229.0" prefHeight="25.0" prefWidth="90.0" />
+                        <Text layoutX="822.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Наименование" />
+                        <Text layoutX="836.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Категория" />
+                        <Text layoutX="821.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Производитель" />
+                        <Text layoutX="849.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Цена" />
+                        <Button fx:id="Search_button" layoutX="838.0" layoutY="321.0" mnemonicParsing="false" onAction="#Search" text="Найти" />
+                        <Text fx:id="Search_Message" fill="RED" layoutX="765.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="196.13671875">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="Search_price_up_to" layoutX="877.0" layoutY="229.0" prefHeight="25.0" prefWidth="90.0" />
+                        <Text layoutX="797.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="От" />
+                        <Text layoutX="914.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="До" />
+                        <DatePicker fx:id="Search_Date" layoutX="777.0" layoutY="280.0" />
+                        <Text layoutX="852.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Дата" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Категории товаров">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="Categories" prefHeight="666.0" prefWidth="736.0">
+                          <columns>
+                            <TableColumn fx:id="Categories_name" prefWidth="158.0" text="Категория" />
+                              <TableColumn fx:id="Categories_Number_Of_Products_Names" prefWidth="147.0" text="Кол-во наименований" />
+                            <TableColumn fx:id="Categories_Number_Of_Goods" prefWidth="101.0" text="Общее кол-во" />
+                              <TableColumn fx:id="Categories_Average_Price" prefWidth="122.0" text="Средняя цена" />
+                              <TableColumn fx:id="Categories_Max_Price" prefWidth="97.0" text="Мин. цена" />
+                              <TableColumn fx:id="Categories_Min_Price" prefWidth="108.0" text="Макс. цена" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Круговая диаграмма">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <PieChart fx:id="pieChart" layoutX="168.0" layoutY="58.0" prefHeight="509.0" prefWidth="665.0" />
+                        <Text layoutX="395.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Категории товаров">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Фирмы производители">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="Manufacturers" prefHeight="625.0" prefWidth="715.0" AnchorPane.topAnchor="0.0">
+                          <columns>
+                              <TableColumn fx:id="Manufacturers_Name" prefWidth="103.0" text="Производитель" />
+                            <TableColumn fx:id="Manufacturers_Category" prefWidth="100.0" text="Категория" />
+                              <TableColumn fx:id="Manufacturers_Number_Of_Goods" prefWidth="104.0" text="Кол-во товара" />
+                              <TableColumn fx:id="Manufacturers_Percent_Of_Goods" prefWidth="116.0" text="\% от всех товаров" />
+                          </columns>
+                        </TableView>
+                        <Text fx:id="Manufacturer_All_Products" layoutX="715.0" layoutY="615.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Общее кол-во товара:" wrappingWidth="268.14453125">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Text>
+                        <TextField fx:id="Manufacturers_search" layoutX="769.0" layoutY="99.0" />
+                        <Text fx:id="Manufacturers_Message" fill="RED" layoutX="786.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="115.13671875">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="Munafacturers_button" layoutX="818.0" layoutY="135.0" mnemonicParsing="false" onAction="#Manufacturers_show" text="Найти" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="admintab" disable="true" text="Данные">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="560.0" prefWidth="874.0">
+                     <children>
+                        <Text layoutX="165.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ввести новые данные" textAlignment="CENTER" wrappingWidth="242.291015625">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="641.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Обновить данные о товаре" textAlignment="CENTER" wrappingWidth="323.291015625">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="681.0" layoutY="458.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Удалить товар" textAlignment="CENTER" wrappingWidth="242.291015625">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="Delete_Product" layoutX="728.0" layoutY="498.0" onKeyTyped="#Delete_Enter_Id" />
+                        <TextField fx:id="Update_product_id" layoutX="728.0" layoutY="75.0" onKeyTyped="#Update_Enter_Id" />
+                        <TextField fx:id="Update_product_price" layoutX="728.0" layoutY="150.0" onKeyTyped="#Update_Enter_Price" />
+                        <TextField fx:id="Update_Product_Plus_Quantity" layoutX="728.0" layoutY="212.0" onKeyTyped="#Update_Enter_Plus_Quantity" />
+                        <Text layoutX="777.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id товара" />
+                        <Text layoutX="777.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id товара" />
+                        <Text layoutX="788.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Цена" />
+                        <Text layoutX="759.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Товара пришло" />
+                        <Text layoutX="737.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Дата последнего завоза" />
+                        <TextField fx:id="Add_Product_Name" layoutX="212.0" layoutY="100.0" />
+                        <TextField fx:id="Add_Product_Category" layoutX="212.0" layoutY="150.0" />
+                        <TextField fx:id="Add_Product_Manufacturer" layoutX="212.0" layoutY="200.0" />
+                        <TextField fx:id="Add_Product_Price" layoutX="212.0" layoutY="252.0" onKeyTyped="#Add_Enter_Price" />
+                        <TextField fx:id="Add_Product_Quantity" layoutX="212.0" layoutY="300.0" onKeyTyped="#Add_Enter_Quantity" />
+                        <TextField fx:id="Add_Product_Unit" layoutX="212.0" layoutY="347.0" />
+                        <Text layoutX="245.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Наименование" />
+                        <Text layoutX="258.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Категория" />
+                        <Text layoutX="243.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Производитель" />
+                        <Text layoutX="271.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Цена" />
+                        <Text layoutX="253.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Количество" />
+                        <Text layoutX="230.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Единица измерения" />
+                        <Text layoutX="252.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Дата завоза" />
+                        <TextField fx:id="Update_Product_Minus_Quantity" layoutX="728.0" layoutY="265.0" onKeyTyped="#Update_Enter_Minus_Quantity" />
+                        <Text layoutX="767.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Товара ушло" />
+                        <Button fx:id="Add_Button" layoutX="256.0" layoutY="448.0" mnemonicParsing="false" onAction="#AddProduct" prefHeight="25.0" prefWidth="58.0" text="Ок" />
+                        <Button fx:id="Update_button" layoutX="770.0" layoutY="360.0" mnemonicParsing="false" onAction="#UpdateProduct" prefHeight="25.0" prefWidth="66.0" text="Ок" />
+                        <Button fx:id="Delete_Button" layoutX="776.0" layoutY="535.0" mnemonicParsing="false" onAction="#DeleteProduct" prefHeight="25.0" prefWidth="52.0" text="Ок" />
+                        <Text fx:id="Delete_message" fill="RED" layoutX="749.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="106.291015625">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="Add_message" fill="RED" layoutX="210.0" layoutY="502.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="149.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="Update_Message" fill="RED" layoutX="699.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="207.291015625">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <DatePicker fx:id="Add_Product_Date" layoutX="198.0" layoutY="396.0" />
+                        <DatePicker fx:id="Update_Product_Date" layoutX="716.0" layoutY="318.0" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
